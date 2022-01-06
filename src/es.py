@@ -1,2 +1,7 @@
-def entrada() :
-    return [1006, 1007, 2006, 3007, 2108, 1108, 0, 0, 0]
+def entrada(p) :
+    leitor = open(p)
+    linhas = leitor.readlines()
+    for i, linha in enumerate(linhas) :
+        linhas[i] = int(linha)
+    leitor.close()
+    return linhas
