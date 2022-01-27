@@ -1,11 +1,7 @@
 import es
 import sys
-sml = ''
-void = sys.argv[1] == '-i' 
-if void :
-    sml = es.entrada('void.txt')
-else :
-    sml = es.entrada(sys.argv[1])
+sml = []
+output = ''
 cursor = 0
 acumulador = 0
 def comando(palavra) :
@@ -13,7 +9,8 @@ def comando(palavra) :
     return (int(word[1:3]),int(word[3:]))
 
 def valida() :
-    x = int(input())
+    s = input()
+    x = int('4300' if s == '' else s)
     if x < 10000 and x > -10000 :
         return x
     else :
@@ -81,18 +78,41 @@ controle = {
     }
 def run() :
     global cursor
-    global void
+    void = sys.argv[1] == '-i'
     t = ''
     if void :
         t = comando(valida())
     else :
         t = comando(sml[cursor])
-    cursor = controle.get(str(t[0]))(t[1])
+    cursor = controle[str(t[0])](t[1])
     if not t[0] == 43 :
         run()
 
+def write() :
+    output = ''
+    key = False
+    for i in range(100) :
+        x =  0 if key else valida()
+        output = "%s%+05d\n" %  (output, x)
+        sml.append(x)
+        if (x < 4400 and x > 4299) or (x > -4400 and x < -4299) :
+            key = True
+    es.saida(sys.argv[-1], output)
+
 def main():
-    run()
+    global sml
+    if sys.argv[1] == '-w' :
+        print('write mode')
+        write()
+    else:
+        if sys.argv[-1] == '-i' :
+            print('interative mode')
+            sml = es.entrada('void.txt')
+        else :
+            print('defalte mode')
+            sml = es.entrada(sys.argv[1])
+            print(sml)
+        run()
 
 if __name__ == "__main__" :
     main()

@@ -5,3 +5,7 @@ def entrada(p) :
         linhas[i] = int(linha)
     leitor.close()
     return linhas
+def saida(p, out) :
+    writer  = open(p, 'w')
+    writer.write(out)
+    writer.close()
