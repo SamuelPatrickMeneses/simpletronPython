@@ -38,17 +38,17 @@ def soma(p) :
     acumulador += sml[p]
     return cursor + 1
 
-def subtração(p) :
+def subtracao(p) :
     global acumulador
     acumulador -= sml[p]
     return cursor + 1
 
-def divisão(p) :
+def divisao(p) :
     global acumulador
     acumulador /= sml[p]
     return cursor + 1
 
-def multiplicação(p) :
+def multiplicacao(p) :
     global acumulador
     acumulador -= sml[p]
     return cursor + 1
@@ -68,9 +68,9 @@ controle = {
     "20": lambda p : carega(p),
     "21": lambda p : grava(p),
     "30": lambda p : soma(p),
-    "31": lambda p : subtração(p),
-    "32": lambda p : divição(p),
-    "33": lambda p : multiplicação(p),
+    "31": lambda p : subtracao(p),
+    "32": lambda p : divicao(p),
+    "33": lambda p : multiplicacao(p),
     "40": lambda p : desvio(p),
     "41": lambda p : desvioNegativo(p),
     "42": lambda p : desvio0(p),
